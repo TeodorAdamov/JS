@@ -1,8 +1,8 @@
-function sort(num1, num2, num3){
-
+function sort(num1, num2, num3) {
     let arr = [num1, num2, num3]
-    let max =  
-   console.log(max);
+
+    let result = arr.sort((a, b) => b - a).join('\n');
+    console.log(result);
 }
 
-sort(2,1,3)
+sort(2, 1, 3)
