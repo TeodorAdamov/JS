@@ -31,7 +31,7 @@ function dungeonestDark(array) {
             } else {
                 console.log(`You died! Killed by ${command[0]}.`);
 
-                console.log(`Best room: ${i + 1}`);
+                console.log(`Best room: ${bestRoom}`);
                 return;
             }
         }
