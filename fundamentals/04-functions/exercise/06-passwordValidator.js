@@ -1,5 +1,5 @@
 function passwordValidator(password) {
-    if (!passwordLength(password)){
+    if (!passwordLength(password)) {
         console.log("Password must be between 6 and 10 characters");
     }
     if (!isPasswordOnlyLettersAndDigits(password)) {
@@ -16,9 +16,9 @@ function passwordValidator(password) {
     function passwordLength(pass) {
         if (pass.length >= 6 && pass.length <= 10) {
             return true;
-        } else {
-            return false;
         }
+        return false;
+
     }
 
     function checkIfPasswordHasTwoDigits(pass) {
@@ -33,9 +33,9 @@ function passwordValidator(password) {
         }
         if (numCount >= 2) {
             return true;
-        } else {
-            return false;
         }
+        return false;
+
 
     }
 
@@ -45,11 +45,11 @@ function passwordValidator(password) {
             if ((code >= 48 && code <= 57) || (code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
             } else {
                 return false;
-            }  
+            }
         }
         return true;
     }
-    
+
 }
 
-passwordValidator('MyPass12M')
+passwordValidator('Pa$s$s')
