@@ -12,7 +12,6 @@ function charactersInRange(char1, char2) {
             result.push(String.fromCharCode(curElement));
         }
     }
-
     console.log(result.join(' '));
 }
 charactersInRange('#',
