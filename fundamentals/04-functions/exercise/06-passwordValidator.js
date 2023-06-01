@@ -49,7 +49,4 @@ function passwordValidator(password) {
         }
         return true;
     }
-
 }
-
-passwordValidator('Pa$s$s')
