@@ -48,5 +48,5 @@ function passwordValidator(password) {
             }
         }
         return true;
-    }
+    } 
 }
