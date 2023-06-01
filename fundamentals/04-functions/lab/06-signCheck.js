@@ -16,7 +16,7 @@ function signCheck(numOne, numTwo, numThree) {
     if (checkNegativeCount(numOne, numTwo, numThree) === 1) {
         console.log('Negative');
     } else if (checkNegativeCount(numOne, numTwo, numThree) === 2) {
-        console.log('positive');
+        console.log('Positive');
     } else if (checkNegativeCount(numOne, numTwo, numThree) === 3) {
         console.log('Negative');
     } else {
