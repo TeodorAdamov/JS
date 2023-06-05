@@ -1,6 +1,6 @@
 function loadingBar(num) {
     if (num === 100) {
-        return '100% Complete!';
+        return '100% Complete!\n[%%%%%%%%%%]';
     }
     let arr = Array(10).fill('.')
 
