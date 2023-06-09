@@ -18,5 +18,4 @@ function searchForANumber(array, commands) {
 
 }
 
-searchForANumber([7, 1, 5, 8, 2, 7],
-    [3, 1, 5])
+searchForANumber([7, 1, 5, 8, 2, 7],[3, 1, 5])
