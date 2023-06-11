@@ -4,7 +4,7 @@ function manOWar(data) {
     let warShipStatus = data.shift().split(">").map(Number);
 
 
-    const maxHP = data.shift();
+    const maxHP = Number(data.shift());
     let commandArray = data.shift().split(" ");
     let command = commandArray.shift();
 
@@ -67,10 +67,10 @@ function manOWar(data) {
     }
     let pirateShipSum = 0;
     let warShipSum = 0;
-    for(let el of pirateShipStatus){
+    for (let el of pirateShipStatus) {
         pirateShipSum += el
     }
-    for(let el of warShipStatus) {
+    for (let el of warShipStatus) {
         warShipSum += el
     }
 
@@ -79,11 +79,11 @@ function manOWar(data) {
 }
 
 manOWar(["2>3>4>5>2",
-"6>7>8>9>10>11",
-"20",
-"Status",
-"Fire 2 3",
-"Defend 0 4 11",
-"Repair 3 18",
-"Retire"])
+    "6>7>8>9>10>11",
+    "20",
+    "Status",
+    "Fire 2 3",
+    "Defend 0 4 11",
+    "Repair 3 18",
+    "Retire"])
 
