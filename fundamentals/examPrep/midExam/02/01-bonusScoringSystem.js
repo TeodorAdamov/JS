@@ -12,7 +12,7 @@ function bonusScoringSystem(input) {
 
         if(bonus > maxBonus) {
             maxBonus = bonus;
-            maxAttendance = Number(input[i])
+            maxAttendance = Number(input[i]);
         }
     }
     console.log(`Max Bonus: ${Math.ceil(maxBonus)}.`);

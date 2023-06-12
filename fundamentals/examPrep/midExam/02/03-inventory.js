@@ -24,8 +24,6 @@ function inventory(arr) {
                 if (myInventory.includes(splitted[0])) {
                     let indexOfOldItem = myInventory.indexOf(splitted[0]);
                     myInventory.splice(indexOfOldItem + 1, 0, splitted[1]);
-                } else {
-                    break;
                 }
                 break;
             case 'Renew':
@@ -40,7 +38,7 @@ function inventory(arr) {
         command = commandArray[0];
     }
 
-    console.log(myInventory.join(" "));
+    console.log(myInventory.join(", "));
 }
 
 inventory([
