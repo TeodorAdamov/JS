@@ -3,7 +3,7 @@ function catalogue(data) {
     let myProducts = [];
 
     for (let line of data) {
-        let [product, price] = line.split(' : ')
+        let [product, price] = line.split(' : ');
         let tempProduct = {
             name: product,
             price: Number(price)

@@ -12,8 +12,6 @@ function makeADictionary(data) {
     Object.keys(dictionary)
         .sort((a, b) => a.localeCompare(b))
         .forEach(a => console.log(`Term: ${a} => Definition: ${dictionary[a]}`));
-
-
 }
 
 makeADictionary([
