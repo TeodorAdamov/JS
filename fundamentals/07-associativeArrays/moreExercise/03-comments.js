@@ -41,8 +41,6 @@ function com(data) {
                     console.log(`--- From user ${comment.author}: ${comment.title} - ${comment.content}`);
                 })
         })
-
-
 }
 
 com([
