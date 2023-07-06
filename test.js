@@ -1,36 +1,41 @@
-function com(data) {
-
-    let myComments = {
-        users: [],
-        articles: {}
-    };
-
-    for (let line of data) {
-
-        if (line.includes('user ')) {
-            let userName = line.replace('user ', '');
-            myComments.users.push(userName);
-        } else if (line.includes('article ')) {
-            let articleName = line.replace('article ', '');
-            myComments.articles[articleName] = new Map;
-        } else {
-            let [userName, rest] = line.replace(' posts on ', '/').split('/');
-            let [articleName, titleAndComment] = rest.split(': ');
-            titleAndComment = titleAndComment.replace(', ', ' - ')
-
-            if (myComments.users.includes(userName) && myComments.articles.hasOwnProperty(articleName)) {
-                myComments.articles[articleName].set(userName, titleAndComment)
-            }
+function bookShelf(input) {
+    let shelvesList = new Map();
+    let bookList = new Map();
+    for (const line of input) {
+      if (line.includes(" -> ")) {
+        let [id, type] = line.split(" -> ");
+        if (!shelvesList.has(type)) {
+          let temp = [...shelvesList.values()];
+          if (!temp.includes(id)) {
+            shelvesList.set(type, id);
+          }
         }
+      } else if (line.includes(": ")) {
+        let [bookTitle, rest] = line.split(": ");
+        let [bookAuthor, genre] = rest.split(", ");
+        let curShelves = [...shelvesList.keys()];
+        if (curShelves.includes(genre)) {
+          if (!bookList.has(genre)) {
+            bookList.set(genre, [
+              { bookTitle: bookTitle, bookAuthor: bookAuthor },
+            ]);
+          } else {
+            let currBookList = bookList.get(genre);
+            currBookList.push({ bookTitle: bookTitle, bookAuthor: bookAuthor });
+            bookList.set(genre, currBookList);
+          }
+        }
+      }
     }
-
-    Object.entries(myComments.articles).sort((a, b) => b[1].size - a[1].size)
-        .forEach(a => {
-            console.log(`Comments on ${a[0]}`);
-            Array.from(a[1].entries()).sort((a, b) => a[0].localeCompare(b[0]))
-                .forEach(a => {
-                    console.log(`--- From user ${a[0]}: ${a[1]}`);
-                })
-        })
-
-}
+   
+    [...bookList.entries()]
+      .sort((a, b) => b[1].length - a[1].length)
+      .forEach((shelf) => {
+        let [genre, books] = shelf;
+        books.sort((a, b) => a.bookTitle.localeCompare(b.bookTitle));
+        console.log(`${shelvesList.get(genre)} ${genre}: ${books.length}`);
+        for (const book of books) {
+          console.log(`---> ${book.bookTitle}: ${book.bookAuthor}`);
+        }
+      });
+  }
