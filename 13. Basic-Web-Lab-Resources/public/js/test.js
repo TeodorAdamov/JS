@@ -1,12 +1,19 @@
 const addButton = document.getElementById('add');
-const number = document.getElementById('number').value;
+const num = document.getElementById('number');
 const deleteButton = document.getElementById('delete');
+
 
 addButton.addEventListener('click', function onclick(event) {
     let pattern = /\+359\d{9}/;
-    if (number.match(pattern) == null) {
+    debugger
+    if (num.value.match(pattern) === null) {
         window.alert('Invalid Number');
     }
+})
+
+
+deleteButton.addEventListener('click', function onclick(){
+    window.confirm('Are you sure')
 })
 
 
