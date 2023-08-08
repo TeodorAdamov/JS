@@ -28,6 +28,9 @@ function bookshelf(data) {
             }
         }
     }
+    
+
+    
     shelves.sort((a, b) => b.books.length - a.books.length)
         .forEach(shelf => {
             console.log(`${shelf.id} ${shelf.genre}: ${shelf.books.length}`);

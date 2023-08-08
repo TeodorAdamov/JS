@@ -5,7 +5,6 @@ const deleteButton = document.getElementById('delete');
 
 addButton.addEventListener('click', function onclick(event) {
     let pattern = /\+359\d{9}/;
-    debugger
     if (num.value.match(pattern) === null) {
         window.alert('Invalid Number');
     }
