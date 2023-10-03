@@ -8,6 +8,6 @@ function sum(a, b) {
 describe('test', function () {
 
     it('works', function () {
-        expect(sum(3,5)).to.equal(9)
+        expect(sum(3,5)).to.equal(8)
     })
 })
