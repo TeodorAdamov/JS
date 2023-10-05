@@ -27,17 +27,13 @@ class Company {
             }
         }
 
-
-        const sortedDepartment = this.departments[department].sort((a, b) => b.salary - a.salary || a.name.localeCompare(b.name))
         const output = []
+        this.departments[department].sort((a, b) => b.salary - a.salary || a.name.localeCompare(b.name))
+            .forEach(worker => {
+                output.push(`${worker.name} ${worker.salary} ${worker.position}`)
+            })
 
-        sortedDepartment.forEach(worker => {
-            output.push(`${worker.name} ${worker.salary} ${worker.position}`)
-        })
-
-        
-
-        return`Best Department is: ${department}\nAverage salary: ${highestAverageSalary.toFixed(2)}\n${output.join('\n')}`
+        return `Best Department is: ${department}\nAverage salary: ${highestAverageSalary.toFixed(2)}\n${output.join('\n')}`
     }
 }
 
@@ -51,8 +47,3 @@ c.addEmployee("Pesho", 1000, "graphical designer", "Marketing");
 c.addEmployee("Gosho", 1350, "HR", "Human resources");
 
 console.log(c.bestDepartment());
-
-
-Unexpected error: expected 
-'Best Department is: Human resources\nAverage salary: 1675.00\nStanimir 2000 engineer\nGosho 1350 HR' to equal 
-'Best Department is: Human resources\nAverage salary: 1675.00\nStanimir 2000 engineer\nGosho 1350 HR'
