@@ -22,8 +22,6 @@ class Hex {
     parse(str) {
         return parseInt(str, 16)
     }
-
-
 }
 
 let FF = new Hex(255);
@@ -34,6 +32,3 @@ let b = new Hex(5);
 console.log(a.plus(b).toString());
 console.log(a.plus(b).toString() === '0xF');
 console.log(FF.parse('AAA'));
-
-let num = 15
-console.log(num.toString())
