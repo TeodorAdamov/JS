@@ -83,15 +83,9 @@ async function attachEvents() {
                 myElement.classList.add(el);
             });
         }
-
-        if (innerHTML) {
-            myElement.innerHTML = innerHTML;
-        }
-
-        if (text) {
-            myElement.textContent = text;
-        }
-
+        innerHTML ? myElement.innerHTML = innerHTML : '';
+        text ? myElement.textContent = text : '';
+        
         return myElement;
     }
 }
