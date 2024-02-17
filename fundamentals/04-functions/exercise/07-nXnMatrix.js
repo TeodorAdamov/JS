@@ -9,4 +9,4 @@ function nXnMatrix (n) {
     }
 }
 
-nXnMatrix(2)
+nXnMatrix(15)

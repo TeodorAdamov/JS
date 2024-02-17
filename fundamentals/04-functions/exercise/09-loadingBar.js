@@ -12,4 +12,4 @@ function loadingBar(num) {
 
 }
 
-console.log(loadingBar(100))
+console.log(loadingBar(60))
