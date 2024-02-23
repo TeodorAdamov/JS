@@ -42,6 +42,11 @@ li p {
     background-color: rgb(175, 50, 50);
 }
 
+.delete-btn:hover {
+    background-color: rgb(21, 21, 21);
+    color: white;
+}
+
 .completed {
     text-decoration: line-through;
     opacity: 0.5;
@@ -54,6 +59,10 @@ li p {
 .undo-btn {
     background-color: rgb(123, 179, 130);
     border-radius: 0.5em;
+}
+
+.undo-btn:hover {
+    background-color: rgb(148, 218, 157);
 }
 
 li.completed .undo {

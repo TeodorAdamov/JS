@@ -47,6 +47,10 @@
     cursor: pointer;
 }
 
+.add-button:hover {
+    background-color: rgb(169, 169, 169);
+}
+
 .todo-list {
     display: flex;
     flex-direction: column;

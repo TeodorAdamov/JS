@@ -33,7 +33,6 @@
 }
 
 .edit-input input {
-    max-width: 350px;
     height: 50px;
     border-radius: 0.5em;
     border: 2px solid black;
