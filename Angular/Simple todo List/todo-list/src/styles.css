@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://use.fontawesome.com/releases/v6.5.1/css/all.css');
+
+.button {
+    padding: 0.5em 1em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    cursor: pointer;
+}

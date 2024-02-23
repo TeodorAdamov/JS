@@ -1,0 +1,65 @@
+li {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+    background-color: rgb(115, 217, 230);
+    margin: 0.5em;
+    border-radius: 0.5em;
+}
+
+li p {
+    text-transform: uppercase;
+    font-style: italic;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.tools {
+    display: flex;
+    gap: 0.5em;
+}
+
+.complete-btn {
+    background-color: rgb(103, 228, 103);
+}
+
+.complete-btn:hover {
+    background-color: rgb(69, 153, 69)
+}
+
+.edit-btn {
+    background-color: rgb(223, 223, 97);
+    border-radius: 0.5em;
+}
+
+.edit-btn:hover {
+    background-color: rgb(147, 147, 65);
+}
+
+.delete-btn {
+    background-color: rgb(175, 50, 50);
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.editting {
+    background-color: rgb(97, 138, 242);
+}
+
+.undo-btn {
+    background-color: rgb(123, 179, 130);
+    border-radius: 0.5em;
+}
+
+li.completed .undo {
+    opacity: 1 !important;
+}
+
+li.completed .undo-btn {
+    opacity: 1 !important;
+}

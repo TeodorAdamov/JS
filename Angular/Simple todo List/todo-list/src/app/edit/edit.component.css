@@ -1,0 +1,49 @@
+.edit-input {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 15em;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    padding: 2em;
+    border-radius: 0.5em;
+}
+
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs input {
+    flex: 0 0 95%;
+    padding: 0.5em;
+}
+
+
+.edit-title {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.edit-input input {
+    width: 350px;
+    height: 50px;
+    border-radius: 0.5em;
+    border: 2px solid black;
+    font-size: 2em;
+}
+
+.edit-buttons {
+    border-radius: 0.5em;
+    border: 2px solid black;
+    padding: 1em 2em;
+    font-size: 1em;
+}
+

@@ -1,0 +1,10 @@
+<div [attr.id]="id" class="edit-input">
+    <div>
+        <p class="edit-title">Edit Todo</p>
+    </div>
+    <div class="inputs">
+        <input #userInput type="text" value="{{title}}">
+        <button (click)="onUserSave(userInput, id)" class="button edit-buttons">Save</button>
+        <button (click)="onUserCancel(id)" class="button edit-buttons">Cancel</button>
+    </div>
+</div>

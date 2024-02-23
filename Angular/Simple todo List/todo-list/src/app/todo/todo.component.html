@@ -1,0 +1,23 @@
+<li *ngFor="let todo of todos" [class.editting]=todo.editting  [attr.id]="todo.id"
+    #getLi>
+    <p [class.completed]="todo.completed">{{todo.title}}</p>
+    <span @myTrigger *ngIf="todo.editting" class="edit-info">
+        <app-edit [title]="todo.title" [id]="todo.id"></app-edit>
+    </span>
+    <div class="tools">
+        <span *ngIf="!todo.completed">
+            <button (click)="onUserComplete(getLi)" [disabled]="this.appServ.isEditting" class="button complete-btn"><i class="fas fa-check"></i></button>
+        </span>
+        <span *ngIf="todo.completed" class="undo">
+            <button (click)="onUserComplete(getLi)" [disabled]="this.appServ.isEditting" class="button undo-btn">Undo</button>
+        </span>
+        <span *ngIf="!todo.completed" class="edit">
+            <button (click)="onUserEdit(getLi)" [disabled]="this.appServ.isEditting" class="button edit-btn">Edit</button>
+        </span>
+        <span *ngIf="!todo.completed">
+            <button (click)="onUserDelete(getLi)" [disabled]="this.appServ.isEditting" class="button delete-btn"><i class="fas fa-times"></i></button>
+        </span>
+    </div>
+</li>
+
+

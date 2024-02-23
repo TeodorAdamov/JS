@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="header">
+        <h1 class="todo-title">{{title}}</h1>
+        <div class="input-field">
+            <input type="text" #userInput class="todo-input" placeholder="Write your todo here">
+            <button (click)="input(userInput)" class="add-button">ADD</button>
+        </div>
+    </div>
+    <div class="todo-list">
+        <h3>List of works todo:</h3>
+        <p *ngIf="this.appServ.loading">Loading ....</p>
+        <ul *ngIf="!this.appServ.loading">
+            <app-todo></app-todo>
+        </ul>
+    </div>
+</div>
