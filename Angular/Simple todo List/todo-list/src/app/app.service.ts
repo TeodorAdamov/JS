@@ -14,16 +14,18 @@ export class AppService {
     constructor(private fetchService: FetcherService) { }
 
     getData() {
-        this.fetchService.fetchData()
-            .pipe(map(objects => {
-                return objects
-                    .map(obj => {
-                        return { ...obj, editting: false }
-                    })
-            })).subscribe((response: ToDo[]) => {
-                this.toDoList.push(...response)
-                this.loading = false;
-            })
+        this.toDoList = this.fetchService.todos
+        this.loading = false;
+        // this.fetchService.fetchData()
+        //     .pipe(map(objects => {
+        //         return objects
+        //             .map(obj => {
+        //                 return { ...obj, editting: false }
+        //             })
+        //     })).subscribe((response: ToDo[]) => {
+        //         this.toDoList.push(...response)
+        //         this.loading = false;
+        //     })
     }
     processData(userInput: ToDo): void {
         if (userInput.title) {
@@ -37,21 +39,23 @@ export class AppService {
         const todo: ToDo = this.toDoList.find(todo => todo.id === id)!;
         switch (method) {
             case 'complete': {
-                if (!todo.editting) {
+                if (!todo.editing) {
                     todo.completed = !todo.completed;
                 }
             }
                 break;
             case 'delete': {
-                if (!todo.completed && !todo.editting) {
-                    this.toDoList.splice(this.toDoList.indexOf(todo), 1);
+                if (!todo.completed && !todo.editing) {
+                    if (window.confirm('Are you sure you want to delete ?')) {
+                        this.toDoList.splice(this.toDoList.indexOf(todo), 1);
+                    }
                 }
             }
                 break;
             case 'edit': {
-                if (!todo.completed && !todo.editting) {
+                if (!todo.completed && !todo.editing) {
                     this.isEditting = true;
-                    todo.editting = !todo.editting;
+                    todo.editing = !todo.editing;
                 }
             }
         }
@@ -59,14 +63,14 @@ export class AppService {
 
     onEditCancel(id: number) {
         const todo: ToDo = this.toDoList.find(todo => todo.id === id)!
-        todo.editting = !todo.editting;
+        todo.editing = !todo.editing;
         this.isEditting = false;
     }
 
     onEditSave(userInput: string, id: number) {
         const todo: ToDo = this.toDoList.find(todo => todo.id === id)!;
         todo.title = userInput;
-        todo.editting = false;
+        todo.editing = false;
         this.isEditting = false;
     }
 }

@@ -1,7 +1,7 @@
-<li *ngFor="let todo of todos" [class.editting]=todo.editting  [attr.id]="todo.id"
+<li *ngFor="let todo of todos" [class.editting]=todo.editing  [attr.id]="todo.id"
     #getLi>
     <p [class.completed]="todo.completed">{{todo.title}}</p>
-    <span @myTrigger *ngIf="todo.editting" class="edit-info">
+    <span @myTrigger *ngIf="todo.editing" class="edit-info">
         <app-edit [title]="todo.title" [id]="todo.id"></app-edit>
     </span>
     <div class="tools">

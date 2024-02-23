@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnChanges {
             id: this.appServ.toDoList.length + 1,
             title: userInput.value,
             completed: false,
-            editting: false
+            editing: false
         }
         this.appServ.processData(userInputToDo)
         console.log(this.appServ.toDoList);
