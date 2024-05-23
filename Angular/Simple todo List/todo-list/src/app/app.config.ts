@@ -8,5 +8,13 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(), provideAnimations(), importProvidersFrom(provideFirebaseApp(() => initializeApp({"projectId":"todo-list-8841e","appId":"1:429451343820:web:e138433dca10fb3e0f0f69","storageBucket":"todo-list-8841e.appspot.com","apiKey":"AIzaSyDj_oYqCnS3wDusO7rsDojfUxaBab0vjaw","authDomain":"todo-list-8841e.firebaseapp.com","messagingSenderId":"429451343820"}))), importProvidersFrom(provideFirestore(() => getFirestore()))]
+  providers: [provideRouter(routes), provideHttpClient(), provideAnimations(),
+  importProvidersFrom(provideFirebaseApp(() => initializeApp({
+    "projectId": "todo-list-8841e",
+    "appId": "1:429451343820:web:e138433dca10fb3e0f0f69",
+    "storageBucket": "todo-list-8841e.appspot.com",
+    "apiKey": "AIzaSyDj_oYqCnS3wDusO7rsDojfUxaBab0vjaw",
+    "authDomain": "todo-list-8841e.firebaseapp.com",
+    "messagingSenderId": "429451343820"
+  }))), importProvidersFrom(provideFirestore(() => getFirestore()))]
 };

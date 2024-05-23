@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Whiskers",
+        "breed": "Persian",
+        "description": "Whiskers is a fluffy Persian cat with a calm and affectionate personality.",
+        "imageUrl": "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_1280.jpg"
+    },
+    {
+        "name": "Mittens",
+        "breed": "Maine Coon",
+        "description": "Mittens is a playful Maine Coon cat with a big appetite and a love for cuddles.",
+        "imageUrl": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"
+    },
+    {
+        "name": "Smokey",
+        "breed": "Scottish Fold",
+        "description": "Smokey is a curious Scottish Fold cat with a penchant for mischief and naps.",
+        "imageUrl": "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_1280.jpg"
+    },
+    {
+        "name": "Oreo",
+        "breed": "Siamese",
+        "description": "Oreo is an elegant Siamese cat with striking blue eyes and a vocal nature.",
+        "imageUrl": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"
+    },
+    {
+        "name": "sharo",
+        "breed": "Siamese",
+        "description": "my cat upload is working yeeeeeeeeeeeeeeeeeeey",
+        "imageUrl": "/src/data/images/41873_A-Cat.jpg"
+    },
+    {
+        "name": "Biggy",
+        "breed": "Maine Coon",
+        "description": "very big maine coon",
+        "imageUrl": "/src/data/images/81763_stock-photo-sitting-long-haired-cat-looking-aside-full-body-portrait-on-transparent-background-2323092093.jpg"
+    },
+    {
+        "name": "sharo",
+        "breed": "Bengal",
+        "description": "aqseddfsabdfghfghnbfghdhgfr",
+        "imageUrl": "/src/data/images/41628_stock-photo-sitting-long-haired-cat-looking-aside-full-body-portrait-on-transparent-background-2323092093.jpg"
+    }
+]
