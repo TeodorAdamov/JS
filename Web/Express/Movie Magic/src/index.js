@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const { aboutController } = require('./controllers/about');
 const { createController } = require('./controllers/create')
 const { errorController } = require('./controllers/error');
-const { homeController } = require('./controllers/movie');
+const { movieController } = require('./controllers/movie');
 const { detailsController } = require('./controllers/details');
 
 
@@ -26,8 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.get('/', homeController.home);
-app.get('/search', homeController.search)
+app.get('/', movieController.home);
+app.get('/search', movieController.search)
 app.get('/about', aboutController);
 app.get('/create', createController.getCreate);
 app.get('/details/:id', detailsController);
