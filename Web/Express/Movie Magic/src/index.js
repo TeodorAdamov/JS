@@ -6,7 +6,8 @@ const { aboutController } = require('./controllers/about');
 const { createController } = require('./controllers/create')
 const { errorController } = require('./controllers/error');
 const { movieController } = require('./controllers/movie');
-const { detailsController } = require('./controllers/details');
+const { errorHandler } = require('./utility/utils');
+
 
 
 
@@ -23,18 +24,20 @@ app.engine('.hbs', hbs.engine);
 
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 
 app.get('/', movieController.home);
 app.get('/search', movieController.search)
-app.get('/about', aboutController);
+app.get('/details/:id', movieController.details);
 app.get('/create', createController.getCreate);
-app.get('/details/:id', detailsController);
+app.post('/create', createController.postCreate);
+app.get('/about', aboutController);
+
+
+app.use(errorHandler);
 app.get('*', errorController);
 
 
-app.post('/create', createController.postCreate);
 
 app.listen(3000);
 

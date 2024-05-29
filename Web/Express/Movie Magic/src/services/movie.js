@@ -4,8 +4,12 @@ const { Movie } = require('../models/movie');
 
 
 async function getAllMovies() {
-    return await Movie.find({}).lean();
-
+    try {
+        const movies = await Movie.find({}).lean();
+        return movies;
+    } catch (error) {
+        throw new Error('Internal server error');
+    }
 }
 
 async function getMovieById(id) {
@@ -21,5 +25,6 @@ async function createMovie(movieData) {
 
 module.exports = {
     getAllMovies,
-    getMovieById
+    getMovieById,
+    createMovie
 }

@@ -1,11 +1,13 @@
+const { createMovie } = require("../services/movie");
+
 module.exports = {
     createController: {
         getCreate: (req, res) => {
             res.render('create');
         },
-        postCreate: (req, res) => {
+        postCreate: async (req, res) => {
             const body = req.body;
-            console.log(body);
+            await createMovie(body)
         }
     }
 }
