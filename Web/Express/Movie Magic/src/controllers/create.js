@@ -6,8 +6,9 @@ module.exports = {
             res.render('create');
         },
         postCreate: async (req, res) => {
-            const body = req.body;
-            await createMovie(body)
+            const movieData = req.body;
+            await createMovie(movieData);
+            res.redirect('/');
         }
     }
 }

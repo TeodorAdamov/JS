@@ -7,6 +7,7 @@ const { createController } = require('./controllers/create')
 const { errorController } = require('./controllers/error');
 const { movieController } = require('./controllers/movie');
 const { errorHandler } = require('./utility/utils');
+const { createCast, attachCast } = require('./controllers/cast');
 
 
 
@@ -31,6 +32,8 @@ app.get('/search', movieController.search)
 app.get('/details/:id', movieController.details);
 app.get('/create', createController.getCreate);
 app.post('/create', createController.postCreate);
+app.get('/create/cast', createCast);
+app.get('/create/cast/:id', attachCast);
 app.get('/about', aboutController);
 
 

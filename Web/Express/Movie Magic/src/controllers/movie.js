@@ -1,5 +1,5 @@
 const { Movie } = require("../models/movie");
-const { getAllMovies } = require("../services/movie");
+const { getAllMovies, getMovieById } = require("../services/movie");
 const { asyncHandler } = require("../utility/utils");
 
 

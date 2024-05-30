@@ -18,7 +18,23 @@ async function getMovieById(id) {
 
 
 async function createMovie(movieData) {
+    const movie = new Movie({
+        title: movieData.title,
+        genre: movieData.genre,
+        director: movieData.director,
+        year: movieData.year,
+        imageURL: movieData.imageURL,
+        rating: movieData.rating,
+        description: movieData.description,
+    })
 
+    try {
+        await movie.save();
+    } catch (error) {
+        for (const path in error.errors) {
+            console.log(error.errors[path].properties);
+        }
+    }
 }
 
 
