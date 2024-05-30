@@ -33,7 +33,7 @@ app.get('/details/:id', movieController.details);
 app.get('/create', createController.getCreate);
 app.post('/create', createController.postCreate);
 app.get('/create/cast', createCast);
-app.get('/create/cast/:id', attachCast);
+app.get('/attach/cast/:id', attachCast);
 app.get('/about', aboutController);
 
 

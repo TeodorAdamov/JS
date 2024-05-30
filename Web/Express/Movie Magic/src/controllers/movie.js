@@ -17,8 +17,32 @@ const movieController = {
         res.render('details', await getMovieById(id));
     },
     search: async (req, res) => {
-        console.log(req.query);
-        res.render('search');
+        const queries = req.query;
+        let [title, genre, year] = Object.values(queries);
+
+
+        const movies = await getAllMovies();
+
+        if (Object.keys(queries).length == 0 ||
+            (!title && !genre && !year)) {
+            res.render('search', { movies });
+
+        } else {
+            title = title.toLowerCase();
+            genre = genre.toLowerCase();
+
+            const filteredMovies = movies.filter((movie) => {
+
+                if ((movie.title.toLowerCase().includes(title) && title !== '') ||
+                    (movie.genre.toLowerCase().includes(genre) && genre !== '') ||
+                    (movie.year.toString().includes(year) && year !== '')) {
+                    return true;
+                }
+                return false;
+            })
+            res.render('search', { movies: filteredMovies });
+        }
+
     },
 
 
