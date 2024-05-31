@@ -31,6 +31,14 @@ async function getCast() {
     }
 }
 
+async function getCastById(id) {
+    try {
+        return await Cast.findById(id).lean();
+    } catch (error) {
+        throw new Error('Internal server error');
+    }
+}
+
 async function getCastByName(name) {
     try {
         const cast = await Cast.find({ name: name }).lean();
@@ -97,5 +105,6 @@ module.exports = {
     createCast,
     getCast,
     getCastByName,
-    attachCast
+    attachCast,
+    getCastById
 }

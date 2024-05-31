@@ -1,5 +1,5 @@
 const { Movie } = require("../models/movie");
-const { getAllMovies, getMovieById } = require("../services/movie");
+const { getAllMovies, getMovieById, getCastById } = require("../services/movie");
 const { asyncHandler } = require("../utility/utils");
 
 
@@ -13,8 +13,14 @@ const movieController = {
 
     },
     details: async (req, res) => {
-        const id = req.params.id
-        res.render('details', await getMovieById(id));
+        const id = req.params.id;
+        const cast = [];
+        const movie = await getMovieById(id);
+        for (const castId in movie.cast) {
+            const actor = await getCastById(movie.cast[castId])
+            cast.push(actor);
+        }
+        res.render('details', { movie, cast });
     },
     search: async (req, res) => {
         const queries = req.query;
