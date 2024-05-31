@@ -33,10 +33,13 @@ const castSchema = new mongoose.Schema({
             },
             message: url => `${url.value} is not a valid URL`
         }
-    },
-    movie: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Movie',
     }
 })
+
+
+const Cast = mongoose.model('Cast', castSchema);
+
+module.exports = {
+    Cast
+}
 

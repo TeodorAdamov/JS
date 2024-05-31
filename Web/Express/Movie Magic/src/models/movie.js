@@ -36,7 +36,8 @@ const movieSchema = new mongoose.Schema({
     },
     cast: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cast'
+        ref: 'Cast',
+        default: []
     }]
 
 })
