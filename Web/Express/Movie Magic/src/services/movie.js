@@ -14,7 +14,41 @@ async function getAllMovies() {
 }
 
 async function getMovieById(id) {
-    return await Movie.findById(id).lean();
+    try {
+        return await Movie.findById(id).lean();
+
+    } catch (error) {
+        throw new Error('Internal server error');
+    }
+}
+
+async function getCast() {
+    try {
+        const cast = await Cast.find({}).lean();
+        return cast;
+    } catch (error) {
+        throw new Error('Internal server error');
+    }
+}
+
+async function getCastByName(name) {
+    try {
+        const cast = await Cast.find({ name: name }).lean();
+        await Cast.findOneAndUpdate({ name: name }, { attached: true });
+        return cast;
+    } catch (error) {
+        throw new Error('Internal server error');
+    }
+}
+
+async function attachCast(movieId, castId) {
+    try {
+        const movie = await Movie.findById(movieId);
+        movie.cast.push(castId);
+        await movie.save();
+    } catch (error) {
+        throw new Error('Internal server error');
+    }
 }
 
 
@@ -23,16 +57,16 @@ async function createMovie(movieData) {
         title: movieData.title,
         genre: movieData.genre,
         director: movieData.director,
-        year: movieData.year,
+        year: Number(movieData.year),
         imageURL: movieData.imageURL,
-        rating: movieData.rating,
+        rating: Number(movieData.rating),
         description: movieData.description,
     })
 
     try {
         await movie.save();
     } catch (error) {
-        throw new Error(error.errors)
+        throw error
     }
 }
 
@@ -40,16 +74,17 @@ async function createCast(castData) {
 
     const cast = new Cast({
         name: castData.name,
-        age: castData.age,
+        age: Number(castData.age),
         born: castData.born,
         nameInMovie: castData.nameInMovie,
-        imageURL: castData.imageURL,
+        castImage: castData.imageURL,
     })
 
     try {
         await cast.save()
     } catch (error) {
-        throw new Error(error.errors)
+        console.log(error);
+        throw error
     }
 }
 
@@ -59,5 +94,8 @@ module.exports = {
     getAllMovies,
     getMovieById,
     createMovie,
-    createCast
+    createCast,
+    getCast,
+    getCastByName,
+    attachCast
 }

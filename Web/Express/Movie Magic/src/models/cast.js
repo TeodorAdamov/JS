@@ -23,16 +23,10 @@ const castSchema = new mongoose.Schema({
     castImage: {
         type: String,
         required: true,
-        validate: {
-            validator: function (value) {
-                if (value.startsWith('http') || value.startsWith('https')) {
-                    return true;
-                }
-                return false;
-
-            },
-            message: url => `${url.value} is not a valid URL`
-        }
+    },
+    attached: {
+        type: Boolean,
+        default: false
     }
 })
 

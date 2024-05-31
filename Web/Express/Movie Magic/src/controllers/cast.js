@@ -1,18 +1,36 @@
+const { createCast, getMovieById, getCast, getCastByName, attachCast } = require("../services/movie");
 const { asyncHandler } = require("../utility/utils");
 
 const castController = {
     createCastGet: (req, res) => {
         res.render('create-cast');
     },
-    createCastPost: (req, res) => {
+    createCastPost: async (req, res) => {
         const castData = req.body;
-        console.log(castData);
+        await createCast(castData);
+        res.redirect('/');
     },
-    attachCastGet: (req, res) => {
-        res.render('attach-cast');
+    attachCastGet: async (req, res) => {
+        const id = req.params.id
+        const movie = await getMovieById(id);
+        const cast = await getCast();
+        const filteredCast = cast.filter(cast => cast.attached == false);
+        res.render('attach-cast', {
+            movie,
+            filteredCast
+        });
     },
-    attachCastPost: (req, res) => {
+    attachCastPost: async (req, res) => {
+        const movieId = req.params.id
+        const name = req.body.cast;
 
+        const cast = await getCastByName(name);
+
+        const castId = cast[0]._id
+
+
+        await attachCast(movieId, castId)
+        res.redirect(req.url)
     }
 }
 

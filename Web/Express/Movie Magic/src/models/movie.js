@@ -26,8 +26,8 @@ const movieSchema = new mongoose.Schema({
     rating: {
         type: Number,
         required: true,
-        min: 0,
-        max: 10
+        max: 10,
+        min: 1
     },
     description: {
         type: String,
