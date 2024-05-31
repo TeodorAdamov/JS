@@ -1,15 +1,28 @@
+const { asyncHandler } = require("../utility/utils");
+
 const castController = {
-    createCast: (req, res) => {
-        res.render('cast-create');
+    createCastGet: (req, res) => {
+        res.render('create-cast');
     },
-    attachCast: (req, res) => {
-        res.render('cast-attach');
+    createCastPost: (req, res) => {
+        const castData = req.body;
+        console.log(castData);
+    },
+    attachCastGet: (req, res) => {
+        res.render('attach-cast');
+    },
+    attachCastPost: (req, res) => {
+
     }
 }
 
 
 
 module.exports = {
-    createCast: castController.createCast,
-    attachCast: castController.attachCast
+    castController: {
+        createCastGet: asyncHandler(castController.createCastGet),
+        createCastPost: asyncHandler(castController.createCastPost),
+        attachCastGet: asyncHandler(castController.attachCastGet),
+        attachCastPost: asyncHandler(castController.attachCastPost)
+    }
 }

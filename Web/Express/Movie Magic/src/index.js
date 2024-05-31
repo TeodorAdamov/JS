@@ -7,7 +7,7 @@ const { createController } = require('./controllers/create')
 const { errorController } = require('./controllers/error');
 const { movieController } = require('./controllers/movie');
 const { errorHandler } = require('./utility/utils');
-const { createCast, attachCast } = require('./controllers/cast');
+const { createCast, attachCast, castController } = require('./controllers/cast');
 
 
 
@@ -30,10 +30,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', movieController.home);
 app.get('/search', movieController.search)
 app.get('/details/:id', movieController.details);
-app.get('/create', createController.getCreate);
-app.post('/create', createController.postCreate);
-app.get('/create/cast', createCast);
-app.get('/attach/cast/:id', attachCast);
+app.get('/create/movie', createController.getCreateMovie);
+app.post('/create/movie', createController.postCreateMovie);
+app.get('/create/cast', castController.createCastGet);
+app.post('create/cast', castController.createCastPost)
+app.get('/attach/cast/:id', castController.attachCastGet);
+app.post('/attach/cast/:id', castController.attachCastPost);
 app.get('/about', aboutController);
 
 

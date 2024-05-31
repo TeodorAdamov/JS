@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Movie } = require('../models/movie');
+const { Cast } = require('../models/cast');
 
 
 
@@ -31,9 +32,24 @@ async function createMovie(movieData) {
     try {
         await movie.save();
     } catch (error) {
-        for (const path in error.errors) {
-            console.log(error.errors[path].properties);
-        }
+        throw new Error(error.errors)
+    }
+}
+
+async function createCast(castData) {
+
+    const cast = new Cast({
+        name: castData.name,
+        age: castData.age,
+        born: castData.born,
+        nameInMovie: castData.nameInMovie,
+        imageURL: castData.imageURL,
+    })
+
+    try {
+        await cast.save()
+    } catch (error) {
+        throw new Error(error.errors)
     }
 }
 
@@ -42,5 +58,6 @@ async function createMovie(movieData) {
 module.exports = {
     getAllMovies,
     getMovieById,
-    createMovie
+    createMovie,
+    createCast
 }
