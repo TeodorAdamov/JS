@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
 
 const { aboutController } = require('./controllers/about');
 const { createController } = require('./controllers/create')
@@ -8,6 +9,7 @@ const { errorController } = require('./controllers/error');
 const { movieController } = require('./controllers/movie');
 const { errorHandler } = require('./utility/utils');
 const { castController } = require('./controllers/cast');
+const { authController } = require('./controllers/auth');
 
 
 
@@ -25,21 +27,31 @@ app.engine('.hbs', hbs.engine);
 
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-
+//Movie Controller
 app.get('/', movieController.home);
 app.get('/search', movieController.search)
 app.get('/details/:id', movieController.details);
 
+//Authentication Controller
+app.get('/login', authController.loginGet);
+app.get('/register', authController.registerGet);
+app.post('/register', authController.registerPost)
+
+
+//Create Controller
 app.get('/create/movie', createController.getCreateMovie);
 app.post('/create/movie', createController.postCreateMovie);
 
+
+//Cast Controller
 app.get('/create/cast', castController.createCastGet);
 app.post('/create/cast', castController.createCastPost)
 app.get('/attach/cast/:id', castController.attachCastGet);
 app.post('/attach/cast/:id', castController.attachCastPost);
 
-
+//About and errors handlers
 app.get('/about', aboutController);
 app.use(errorHandler);
 app.get('*', errorController);

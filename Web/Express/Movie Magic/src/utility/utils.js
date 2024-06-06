@@ -16,7 +16,16 @@ function errorHandler(err, req, res, next) {
     res.status(500).render('error', { message, statusCode })
 }
 
+function verifyToken(req, res, next) {
+    const token = req.cookies.token;
+
+    if (!token) {
+        throw new Error('Registration required for this page');
+    }
+}
+
 module.exports = {
     asyncHandler,
-    errorHandler
+    errorHandler,
+    verifyToken
 }
