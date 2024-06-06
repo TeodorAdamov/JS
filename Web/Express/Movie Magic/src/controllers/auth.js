@@ -1,9 +1,27 @@
-const { register } = require("../services/auth");
+const { register, login } = require("../services/auth");
 const { asyncHandler } = require("../utility/utils");
 
 const authController = {
     loginGet: (req, res) => {
         res.render('login');
+    },
+    loginPost: async (req, res) => {
+        const { email, password } = req.body;
+        if (!email) {
+            throw new Error('Email required');
+        }
+        if (!password) {
+            throw new Error('Password required');
+        }
+
+        const token = await login(email, password);
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false,
+            maxAge: 3600000
+        })
+
+        res.redirect('/');
     },
     registerGet: (req, res) => {
         res.render('register');
@@ -35,7 +53,8 @@ const authController = {
 module.exports = {
     authController: {
         loginGet: asyncHandler(authController.loginGet),
+        loginPost: asyncHandler(authController.loginPost),
         registerGet: asyncHandler(authController.registerGet),
-        registerPost: asyncHandler(authController.registerPost)
+        registerPost: asyncHandler(authController.registerPost),
     }
 }

@@ -7,7 +7,7 @@ const { aboutController } = require('./controllers/about');
 const { createController } = require('./controllers/create')
 const { errorController } = require('./controllers/error');
 const { movieController } = require('./controllers/movie');
-const { errorHandler } = require('./utility/utils');
+const { errorHandler, verifyToken } = require('./utility/utils');
 const { castController } = require('./controllers/cast');
 const { authController } = require('./controllers/auth');
 
@@ -32,24 +32,25 @@ app.use(cookieParser());
 //Movie Controller
 app.get('/', movieController.home);
 app.get('/search', movieController.search)
-app.get('/details/:id', movieController.details);
+app.get('/details/:id', verifyToken, movieController.details);
 
 //Authentication Controller
 app.get('/login', authController.loginGet);
+app.post('/login', authController.loginPost);
 app.get('/register', authController.registerGet);
-app.post('/register', authController.registerPost)
+app.post('/register', authController.registerPost);
 
 
 //Create Controller
-app.get('/create/movie', createController.getCreateMovie);
-app.post('/create/movie', createController.postCreateMovie);
+app.get('/create/movie', verifyToken, createController.getCreateMovie);
+app.post('/create/movie', verifyToken, createController.postCreateMovie);
 
 
 //Cast Controller
-app.get('/create/cast', castController.createCastGet);
-app.post('/create/cast', castController.createCastPost)
-app.get('/attach/cast/:id', castController.attachCastGet);
-app.post('/attach/cast/:id', castController.attachCastPost);
+app.get('/create/cast', verifyToken, castController.createCastGet);
+app.post('/create/cast', verifyToken, castController.createCastPost)
+app.get('/attach/cast/:id', verifyToken, castController.attachCastGet);
+app.post('/attach/cast/:id', verifyToken, castController.attachCastPost);
 
 //About and errors handlers
 app.get('/about', aboutController);

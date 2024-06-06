@@ -1,6 +1,7 @@
 const { User } = require("../models/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { generateToken } = require("../utility/utils");
 
 
 async function register(email, pass) {
@@ -20,20 +21,26 @@ async function register(email, pass) {
 }
 
 
-function generateToken(user) {
-    const payload = {
-        id: user._id,
-        email: user.email,
-    };
+async function login(email, pass) {
 
-    const secretKey = 'secretkey';
-    const options = {
-        expiresIn: '1h'
-    };
+    try {
+        const user = await User.findOne({ email: email }).lean();
+        if (!user) {
+            throw new Error('Invalid email or password')
+        }
+        const isPassCorrect = await bcrypt.compare(pass, user.password);
 
-    return jwt.sign(payload, secretKey, options);
+        if (isPassCorrect) {
+            return generateToken(user);
+        } 
+
+        throw new Error('Invalid email or password')
+    } catch (err) {
+        throw err
+    }
 }
 
 module.exports = {
-    register
+    register,
+    login
 }
