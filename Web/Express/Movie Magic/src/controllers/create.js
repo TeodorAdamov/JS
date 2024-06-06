@@ -9,18 +9,14 @@ const createController = {
     },
     postCreateMovie: async (req, res) => {
         const movieData = req.body;
-        console.log(movieData);
         try {
-            await createMovie(movieData);
+            const creatorId = res.locals.user.id;
+            await createMovie(movieData, creatorId);
             res.redirect('/');
         } catch (err) {
-            const errors = [];
 
-            for (const error in err.errors) {
-                errors.push(err.errors[error]);
-            }
             console.log(err);
-            res.render('create-movie', err);
+            res.render('create-movie');
         }
 
 

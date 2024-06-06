@@ -16,6 +16,9 @@ const movieController = {
         const id = req.params.id;
         const cast = [];
         const movie = await getMovieById(id);
+        if (res.locals.user.id == movie.creatorId) {
+            movie.isCreator = true;
+        }
         for (const castId in movie.cast) {
             const actor = await getCastById(movie.cast[castId])
             cast.push(actor);
@@ -50,6 +53,10 @@ const movieController = {
         }
 
     },
+
+    editGet: (req, res) => {
+        res.render('edit')
+    }
 
 
 }

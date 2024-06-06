@@ -60,7 +60,7 @@ async function attachCast(movieId, castId) {
 }
 
 
-async function createMovie(movieData) {
+async function createMovie(movieData, creatorId) {
     const movie = new Movie({
         title: movieData.title,
         genre: movieData.genre,
@@ -69,6 +69,7 @@ async function createMovie(movieData) {
         imageURL: movieData.imageURL,
         rating: Number(movieData.rating),
         description: movieData.description,
+        creatorId: creatorId
     })
 
     try {

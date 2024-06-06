@@ -34,6 +34,7 @@ app.use(attachUserInfo);
 app.get('/', movieController.home);
 app.get('/search', movieController.search)
 app.get('/details/:id', verifyToken, movieController.details);
+app.get('/edit/:id', verifyToken, movieController.editGet)
 
 //Authentication Controller
 app.get('/login', authController.loginGet);

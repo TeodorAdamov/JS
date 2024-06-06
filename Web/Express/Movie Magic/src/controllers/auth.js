@@ -47,7 +47,9 @@ const authController = {
         res.redirect('/');
     },
     logout: (req, res) => {
-        
+        res.clearCookie('token');
+        res.locals.user = null;
+        res.redirect('/');
     }
 }
 
@@ -59,5 +61,6 @@ module.exports = {
         loginPost: asyncHandler(authController.loginPost),
         registerGet: asyncHandler(authController.registerGet),
         registerPost: asyncHandler(authController.registerPost),
+        logout: authController.logout
     }
 }
