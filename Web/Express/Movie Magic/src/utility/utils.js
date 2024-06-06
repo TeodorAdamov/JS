@@ -49,9 +49,29 @@ function verifyToken(req, res, next) {
     return next();
 }
 
+function attachUserInfo(req, res, next) {
+    const token = req.cookies.token;
+
+    if (!token) {
+        res.locals.user = null;
+    }
+
+    try {
+        const secretKey = 'secretkey';
+        const decoded = jwt.verify(token, secretKey);
+        res.locals.user = decoded;
+    } catch (err) {
+        res.locals.user = null;
+    }
+    return next();
+
+
+}
+
 module.exports = {
     asyncHandler,
     errorHandler,
     generateToken,
-    verifyToken
+    verifyToken,
+    attachUserInfo
 }

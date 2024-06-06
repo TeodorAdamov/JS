@@ -7,7 +7,7 @@ const { aboutController } = require('./controllers/about');
 const { createController } = require('./controllers/create')
 const { errorController } = require('./controllers/error');
 const { movieController } = require('./controllers/movie');
-const { errorHandler, verifyToken } = require('./utility/utils');
+const { errorHandler, verifyToken, attachUserInfo } = require('./utility/utils');
 const { castController } = require('./controllers/cast');
 const { authController } = require('./controllers/auth');
 
@@ -28,6 +28,7 @@ app.engine('.hbs', hbs.engine);
 app.use('/static', express.static('static'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(attachUserInfo);
 
 //Movie Controller
 app.get('/', movieController.home);
@@ -39,6 +40,7 @@ app.get('/login', authController.loginGet);
 app.post('/login', authController.loginPost);
 app.get('/register', authController.registerGet);
 app.post('/register', authController.registerPost);
+app.get('/logout', verifyToken, authController.logout)
 
 
 //Create Controller

@@ -45,6 +45,9 @@ const authController = {
         })
 
         res.redirect('/');
+    },
+    logout: (req, res) => {
+        
     }
 }
 
