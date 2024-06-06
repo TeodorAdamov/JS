@@ -97,6 +97,14 @@ async function createCast(castData) {
     }
 }
 
+async function deleteMovie(id) {
+    const movie = await Movie.findById(id);
+    for (const castId of movie.cast) {
+        await Cast.findByIdAndDelete(castId)
+    }
+    await Movie.findByIdAndDelete(id);
+}
+
 
 
 module.exports = {
@@ -107,5 +115,6 @@ module.exports = {
     getCast,
     getCastByName,
     attachCast,
-    getCastById
+    getCastById,
+    deleteMovie
 }

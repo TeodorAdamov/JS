@@ -1,5 +1,5 @@
 const { Movie } = require("../models/movie");
-const { getAllMovies, getMovieById, getCastById } = require("../services/movie");
+const { getAllMovies, getMovieById, getCastById, deleteMovie } = require("../services/movie");
 const { asyncHandler } = require("../utility/utils");
 
 
@@ -55,7 +55,12 @@ const movieController = {
     },
 
     editGet: (req, res) => {
-        res.render('edit')
+        res.render('edit');
+    },
+    delete: async (req, res) => {
+        const id = req.params.id
+        await deleteMovie(id);
+        res.redirect('/');
     }
 
 
@@ -65,6 +70,7 @@ module.exports = {
         home: asyncHandler(movieController.home),
         details: asyncHandler(movieController.details),
         search: asyncHandler(movieController.search),
-
+        editGet: asyncHandler(movieController.editGet),
+        delete: asyncHandler(movieController.delete)
     }
 }
