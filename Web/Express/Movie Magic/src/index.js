@@ -32,7 +32,7 @@ app.use(attachUserInfo);
 
 //Movie Controller
 app.get('/', movieController.home);
-app.get('/search', movieController.search)
+app.get('/search', movieController.search);
 app.get('/details/:id', verifyToken, movieController.details);
 app.get('/edit/:id', verifyToken, movieController.editGet);
 app.get('/delete/:id', verifyToken, movieController.delete);
@@ -42,7 +42,7 @@ app.get('/login', authController.loginGet);
 app.post('/login', authController.loginPost);
 app.get('/register', authController.registerGet);
 app.post('/register', authController.registerPost);
-app.get('/logout', verifyToken, authController.logout)
+app.get('/logout', verifyToken, authController.logout);
 
 
 //Create Controller
